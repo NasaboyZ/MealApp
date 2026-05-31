@@ -13,14 +13,42 @@ class TabsScreen extends StatefulWidget {
 class _TabsScreenState extends State<TabsScreen> {
   int _selectedPageIndex = 0;
   final List<Meal> _favoriteMeals = [];
+  void _showinfoMessage(String message) {
+    ScaffoldMessenger.of(context)
+        .clearSnackBars(); // Clear existing SnackBars before showing a new one
+    ScaffoldMessenger.of(context).showSnackBar(
+      // Show a new SnackBar with the provided message
+      SnackBar(
+        // Create a SnackBar with the given message
+        content: Row(
+          children: [
+            const Icon(
+              Icons.info_outline,
+              color: Colors.black,
+            ),
+            const SizedBox(width: 8),
+            Text(message),
+          ],
+        ),
+
+        duration: const Duration(
+            seconds:
+                2), // Set the duration for which the SnackBar will be visible
+      ),
+    );
+  }
 
   void _toggleMealFavoriteStatus(Meal meal) {
     final isExisting = _favoriteMeals.contains(meal);
     setState(() {
       if (isExisting) {
         _favoriteMeals.remove(meal);
+        _showinfoMessage(
+            'Meal removed from favorites.'); // Show a message when a meal is removed from favorites
       } else {
         _favoriteMeals.add(meal);
+        _showinfoMessage(
+            'Meal added to favorites.'); // Show a message when a meal is added to favorites
       }
     });
   }
