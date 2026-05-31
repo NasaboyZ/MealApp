@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:newprojekt/models/meal.dart';
 import 'package:newprojekt/screens/categories.dart';
 import 'package:newprojekt/screens/meals.dart';
+import 'package:newprojekt/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
@@ -74,6 +75,7 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(activePageTitle),
       ),
+      drawer: const MainDrawer(), // Add a Drawer to the Scaffold
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
