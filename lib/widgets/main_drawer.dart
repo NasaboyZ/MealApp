@@ -35,7 +35,23 @@ class MainDrawer extends StatelessWidget {
             )
           ],
         ),
-      )
+      ),
+      ListTile(
+        leading: const Icon(Icons.restaurant),
+        title: const Text('Meals'),
+        onTap: () {
+          Navigator.of(context)
+              .pushReplacementNamed('/'); // Navigate to the home screen
+        },
+      ),
+      ListTile(
+        leading: const Icon(Icons.settings),
+        title: const Text('Filters'),
+        onTap: () {
+          Navigator.of(context).pushReplacementNamed(
+              '/filters'); // Navigate to the filters screen
+        },
+      ),
     ]));
   }
 }
